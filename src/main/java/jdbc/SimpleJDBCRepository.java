@@ -13,6 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class SimpleJDBCRepository {
 
     private static final String CREATE_USER_SQL = "INSERT INTO myusers(firstname, lastname, age) VALUES(?, ?, ?)  ";
@@ -26,7 +27,7 @@ public class SimpleJDBCRepository {
     public Long createUser(User user) {
         Long id = null;
         try(
-                Connection connection = CustomDataSource.getInstance().getConnection();
+                Connection connection = CustomDataSource.getInstancetance().getConnection();
                 PreparedStatement ps = connection.prepareStatement(CREATE_USER_SQL, Statement.RETURN_GENERATED_KEYS)
         ){
             ps.setObject(1, user.getFirstName());
@@ -132,7 +133,7 @@ public class SimpleJDBCRepository {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return user;
+        return null;
     }
 
     public void deleteUser(Long userId) {
