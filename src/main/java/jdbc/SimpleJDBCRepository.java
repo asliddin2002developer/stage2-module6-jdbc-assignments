@@ -23,6 +23,7 @@ public class SimpleJDBCRepository {
     private static final String FIND_USER_BY_NAME_SQL = "SELECT * FROM myusers WHERE name=?";
     private static final String FIND_ALL_USER_SQL = "SELECT * FROM myusers";
 
+
     public Long createUser(User user) {
         Long id = null;
         try(
