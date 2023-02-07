@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public class SimpleJDBCRepository {
 
-    private static final String CREATE_USER_SQL = "INSERT INTO myusers(firstname, lastname, age) VALUES(?, ?, ?)  ";
+    private static final String CREATE_USER_SQL = "INSERT INTO myusers(id, firstname, lastname, age) VALUES(?, ?, ?, ?)  ";
     private static final String UPDATE_USER_SQL = "UPDATE myusers SET firstname=?, lastname=?, age=? WHERE id=?";
     private static final String DELETE_USER = "DELETE FROM myusers WHERE id=?";
     private static final String FIND_USER_BY_ID_SQL = "SELECT * FROM myusers WHERE id=?";
@@ -29,14 +29,14 @@ public class SimpleJDBCRepository {
                 Connection connection = CustomDataSource.getInstance().getConnection();
                 PreparedStatement ps = connection.prepareStatement(CREATE_USER_SQL, Statement.RETURN_GENERATED_KEYS)
         ){
-            ps.setObject(1, user.getFirstName());
-            ps.setObject(2, user.getLastName());
-            ps.setObject(3, user.getAge());
-            ps.executeUpdate(CREATE_USER_SQL);
+            ps.setObject(1, user.getId());
+            ps.setObject(2, user.getFirstName());
+            ps.setObject(3, user.getLastName());
+            ps.setObject(4, user.getAge());
+            ps.executeUpdate();
 
             ResultSet resultSet = ps.getGeneratedKeys();
-            if (resultSet != null){
-                System.out.println(resultSet.getString(2));
+            if (resultSet.next()){
                 id = resultSet.getLong(1);
             }
         }

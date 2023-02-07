@@ -17,5 +17,4 @@ public class User {
     private String lastName;
     private int age;
 
-
 }
