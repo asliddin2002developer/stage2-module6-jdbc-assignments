@@ -15,24 +15,33 @@ import java.util.List;
 @NoArgsConstructor
 public class SimpleJDBCRepository {
 
-    private static final String CREATE_USER_SQL = "INSERT INTO myusers(id, firstname, lastname, age) VALUES(?, ?, ?, ?)  ";
+    private static final String CREATE_USER_SQL = "INSERT INTO myusers(firstname, lastname, age) VALUES(?, ?, ?)  ";
     private static final String UPDATE_USER_SQL = "UPDATE myusers SET firstname=?, lastname=?, age=? WHERE id=?";
     private static final String DELETE_USER = "DELETE FROM myusers WHERE id=?";
     private static final String FIND_USER_BY_ID_SQL = "SELECT * FROM myusers WHERE id=?";
     private static final String FIND_USER_BY_NAME_SQL = "SELECT * FROM myusers WHERE firstname=?";
     private static final String FIND_ALL_USER_SQL = "SELECT * FROM myusers";
 
+    public static void main(String[] args) {
+        User user = new User();
+        user.setId(2L);
+        user.setFirstName("Test");
+        user.setLastName("Testov");
+        user.setAge(23);
 
+        SimpleJDBCRepository db = new SimpleJDBCRepository();
+        System.out.println(db.createUser(user));
+    }
     public Long createUser(User user) {
         Long id = null;
         try(
                 Connection connection = CustomDataSource.getInstance().getConnection();
                 PreparedStatement ps = connection.prepareStatement(CREATE_USER_SQL, Statement.RETURN_GENERATED_KEYS)
         ){
-            ps.setObject(1, user.getId());
-            ps.setObject(2, user.getFirstName());
-            ps.setObject(3, user.getLastName());
-            ps.setObject(4, user.getAge());
+//            ps.setObject(1, user.getId());
+            ps.setObject(1, user.getFirstName());
+            ps.setObject(2, user.getLastName());
+            ps.setObject(3, user.getAge());
             ps.executeUpdate();
 
             ResultSet resultSet = ps.getGeneratedKeys();

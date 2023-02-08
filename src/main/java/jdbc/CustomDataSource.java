@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 @Setter
 public class CustomDataSource implements DataSource {
     private static volatile CustomDataSource instance;
-    private static final Object object = new Object();
+    private static final Object OBJECT = new Object();
     private static final SQLException SQL_EXCEPTION = new SQLException();
     private final String driver;
     private final String url;
@@ -34,7 +34,7 @@ public class CustomDataSource implements DataSource {
     public static CustomDataSource getInstance() {
         if (instance == null){
 
-            synchronized (object){
+            synchronized (OBJECT){
 
                 if (instance == null){
                     try{

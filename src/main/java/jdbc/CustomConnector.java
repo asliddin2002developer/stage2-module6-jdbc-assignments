@@ -6,27 +6,23 @@ import java.sql.SQLException;
 
 public class CustomConnector {
     public Connection getConnection(String url) {
-        Connection conn = null;
         try {
-            conn = DriverManager.getConnection(url);
+            return DriverManager.getConnection(url);
 
         }
         catch(SQLException e){
             System.out.println(e);
         }
-        return conn;
+        return null;
     }
 
     public Connection getConnection(String url, String user, String password)  {
-        Connection conn = null;
-
         try {
-            conn = DriverManager.getConnection(url, user, password);
+            return DriverManager.getConnection(url, user, password);
         }
         catch (SQLException e){
             System.out.println(e);
         }
-
-        return conn;
+        return null;
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_17">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -35,9 +35,9 @@
     <orderEntry type="library" scope="TEST" name="Maven: com.oracle.database.ha:simplefan:19.3.0.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.oracle.database.ha:ons:19.3.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.24" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.h2database:h2:2.1.214" level="project" />
     <orderEntry type="library" name="Maven: org.postgresql:postgresql:42.5.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.checkerframework:checker-qual:3.5.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.5" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: com.h2database:h2:2.1.214" level="project" />
   </component>
 </module>
